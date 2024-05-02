@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From</title>
+</head>
+<body>
+    <h1>Personal Detail Form</h1>
+
+    <form>
+        <div>
+            <label for="name"> Name </label>
+            <input id="name" placeholder="Enter Name" type="text">
+        </div>
+        
+        <div>
+            <label for="email">Email</label>
+            <input id="email" placeholder="Enter Email" type="email">
+        </div>
+
+        <div>
+            <label for="age">Age</label>
+            <input id="age" type="number" min="16" max="100">
+        </div>
+        <div>
+            <label>
+                DOB
+                <input type="date" min="1985-06-01" max="2024-05-02">
+            </label>
+        </div>
+        <div>
+            <label>
+                Password
+                <input type="password" placeholder="Enter Password">
+            </label>
+        </div>
+        <p>Fav Food</p>
+        <label>
+            Biryani
+            <input type="checkbox">
+        </label>
+        <label>
+            Burger
+            <input type="checkbox">
+        </label>
+        <label>
+            Pizza
+            <input type="checkbox">
+        </label>
+        <label>
+            Paneer
+            <input type="checkbox">
+        </label>
+    </form>
+
+    <div>
+        Gender
+        <label>
+            Male
+            <input name="gender" type="radio">
+        </label>
+        <label>
+            Female
+            <input name="gender" type="radio">
+        </label>
+        <label>
+            Other
+            <input name="gender" type="radio">
+        </label>
+    </div>
+    <div>
+        <label>
+            Upload Resume
+            <input type="file">
+        </label>
+    </div>
+    <div>
+        <label>
+            Car color
+            <input type="color">
+        </label>
+    </div>
+
+    <!-- select tag -->
+    <div>
+        <label>Eye Color</label>
+        <select >
+            <option value="">--Select Eye Color--</option>
+            <option value="">Black</option>
+            <option value="">Brown</option>
+            <option value="">Blue</option>
+        </select>
+    </div>
+    <input type="submit" value="Submit the form">
+
+</body>
+</html>
