@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      
+      /* div > #the-one .c1{color:blue} */
+      /* .c1 div.c2>p{color:blue} */
+      /* #the-one .c1.c2{color:blue} */
+      /* #the-one>.c1 {color: blue;} */
+      /* #this-one div.c1 {color:blue;} */
+      /* #the-one .c1 .c2{color: blue} */
+      /* div > #the-one >.c1{color:blue} */
+      /* div>div>div>.c1 .c2{color:blue} */
+      /* #the-one .c1{color:blue} */
+      /* #the-one .c1 .c2{color:blue;} */
+      /* div > #the-one >.c1{color:blue} */
+      /* .some-class>p>.c1.c2{color:blue} */
+
     </style>
 </head>
-
+<!-- .c1 .c2 -> c2 descendent of c1  -->
+<!-- .c1.c2 -> having both class -->
 <body>
     <!-- Select the element with "Select me" and make it blue  -->
     <div class="some-class">
