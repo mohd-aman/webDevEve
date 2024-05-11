@@ -13,12 +13,12 @@
             display: flex;
             
             /* we can interchange primary and cross axis  */
-            flex-direction: column;
+            /* flex-direction: column; */
             /* justify content we can arrange elements along primary axis  */
-            justify-content: center;
+            /* justify-content: center; */
             /* with align items we can align along cross axis  */
             /* align-items: center; */
-            
+            flex-wrap: wrap;   
         }
         .box{
             height: 100px;
@@ -27,13 +27,26 @@
             border: 1px solid black;
             font-size: 5rem;
         }
+        .one{
+            background-color: grey;
+            flex-grow: 1;
+        }
+        .three{
+            background-color: blueviolet;
+            flex-shrink: 2;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="box one">1</div>
-        <div class="box two">2</div>
-        <div class="box three">3</div>
+        <div class="box one"></div>
+        <div class="box two"></div>
+        <div class="box three"></div>
+        <!-- <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div> -->
     </div>
 </body>
 </html>
