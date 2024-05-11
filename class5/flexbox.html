@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <style>
+        .container{
+            height: 80vh;
+            width: 100%;
+            background-color: yellow;
+            border: 1px solid black;
+            display: flex;
+            
+            /* we can interchange primary and cross axis  */
+            flex-direction: column;
+            /* justify content we can arrange elements along primary axis  */
+            justify-content: center;
+            /* with align items we can align along cross axis  */
+            /* align-items: center; */
+            
+        }
+        .box{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            border: 1px solid black;
+            font-size: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box one">1</div>
+        <div class="box two">2</div>
+        <div class="box three">3</div>
+    </div>
+</body>
+</html>
