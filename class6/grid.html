@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        .container{
+            height: 100vh;
+            /* background-color: ; */
+            display: grid;
+            /* grid-template-columns: 100px 100px 100px 100px 100px; */
+            grid-template-columns: repeat(5,100px);
+            grid-template-rows: 100px 100px 100px 100px 100px;
+            /* grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+            /* grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(5,1fr); */
+            /* short hand for above 2 property  */
+            /* first value is for rows and second one is for col  */
+            /* grid-template: repeat(6,1fr) / repeat(5,1fr); */
+
+            /* aliging for grid inside div when extra space is available  */
+            /* justify-content: center;
+            align-content: center; */
+
+            /* aligning for all the items inside grid */
+            /* justify-items: center;
+            align-items: center; */
+        }
+        .item-first{
+            background-color: red;
+            color: whitesmoke;
+            /* grid-column-start: 2;
+            grid-column-end: 5; */
+            /* short for above two  */
+            /* grid-column: 2/5; */
+
+            /* grid-row-start: 4;
+            grid-row-end: 6; */
+            /* short hand for above two property  */
+            /* grid-row: 4/6; */
+
+            /* short hand for grid-row and grid-col  */
+            /* first value is row start, second is col start, third row end forth col end  */
+            grid-area: 2/3/4/5;
+
+            /* justify-self:center;
+            align-self: center; */
+            /* short hand for above two property first one is align-self and second one is justify-self  */
+            /* place-self: center end; */
+        }
+        .item-second{
+            background-color: blue;
+            color: whitesmoke;
+            grid-area: 4/2/7/4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item-first">
+            First item
+        </div>
+        <div class="item-second">
+            Second Item
+        </div>
+    </div>
+</body>
+</html>
