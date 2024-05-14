@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Layout</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: whitesmoke;
+            font-size: 1.5rem;
+        }
+        header,nav,main,aside,div,footer{
+            border: 1px solid white;
+        }
+        .container{
+            height: 99vh;
+            display: grid;
+            background-color: black;
+            grid-template: 1fr 4fr 1fr / 1fr 3fr 1fr 1fr;
+            grid-template-areas: 
+            "head head head head"
+            "nav main aside1 aside2"
+            "nav foot foot foot";
+        }
+
+        header{
+            /* grid-area: 1/1/2/5; */
+            grid-area: head;
+        }
+        nav{
+            /* grid-area: 2/1/4/2; */
+            grid-area: nav;
+        }
+        main{
+            /* grid-area: 2/2/3/3; */
+            grid-area: main;
+        }
+        aside{
+            /* grid-area: 2/3/3/4; */
+            grid-area: aside1;
+        }
+        div{
+            /* grid-area: 2/4/3/5; */
+            grid-area: aside2;
+        }
+        footer{
+            /* grid-area: 3/2/4/5; */
+            grid-area: foot;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>Header</header>
+        <nav>Navbar</nav>
+        <main>Content</main>
+        <aside>Sidebar 1</aside>
+        <div>Sidebar 2</div>
+        <footer>Footer</footer>
+    </div>
+</body>
+</html>
