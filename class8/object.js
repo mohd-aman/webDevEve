@@ -67,4 +67,8 @@ capAmerica.friends[0] = "Winter Soldier"
 //DELETE
 //delete an existing key value pair
 delete capAmerica.age
-console.log(capAmerica);
+// console.log(capAmerica);
+
+capAmerica["sayHi"]();
+console.log(capAmerica.name);
+console.log(capAmerica["name"]);
