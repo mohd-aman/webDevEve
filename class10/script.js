@@ -14,9 +14,9 @@
 
 function parent(){
     function child(){
-        console.log(a);
+        var a = 10;
         function grandchild(){
-            var a = 10;
+            console.log(a);
         }
         grandchild();
     }
