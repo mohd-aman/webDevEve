@@ -29,3 +29,9 @@ console.log(circumferenceArr);
 let areaArr = radiusArr.map(areaOfCircle);
 console.log(areaArr);
 
+
+//Assignment 
+// Question- convert transaction arr into dollar arr
+
+// const transactions = [1000, 3000, 4000, 2000, -898, 3800, -4500];
+// const inrtToUsd = 82;
