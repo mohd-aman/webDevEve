@@ -14,7 +14,7 @@ function cachingFunction(complexCalculation) {
             return window.cache.arg;
         }
         let ans = complexCalculation(arg);
-        window.cache.arg = ans;
+        window.cache[arg] = ans;
         return ans;
     };
 }
