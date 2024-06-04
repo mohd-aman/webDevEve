@@ -5,16 +5,27 @@
  
  pureFxn(5);
  pureFxn(5);
+
+//  {ans-5:10;
+//  ans-10: 20;
+//  ans-20: 50;
+//  ans-2: 50;}
+
+ complexCalculation(5);
+ complexCalculation(10);
+ complexCalculation(10);
+
  
 function cachingFunction(complexCalculation) { 
-    window.cache = {};
+    const cache = {};
+    // cache = {5: 20,10:350}
 
     return function (arg) {
-        if(window.cache.arg){
-            return window.cache.arg;
+        if(cache.arg){
+            return cache[arg];
         }
         let ans = complexCalculation(arg);
-        window.cache[arg] = ans;
+        cache[arg] = ans;
         return ans;
     };
 }
