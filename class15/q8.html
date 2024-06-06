@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="all">Remove All</button>
+    <button id="all" >Remove All</button>
     <ul>
       <li>
         <p>Task - 1</p>
@@ -29,7 +29,28 @@
     <script>
       // Q- Make remove all button work  and make individual delete btn work 
       
+      let deleteAllBtn = document.querySelector('#all');
+      let ul = document.querySelector('ul');
+
+      deleteAllBtn.addEventListener('click',function(){
+        ul.remove();
+      })
+
+      //make it work for one
+      let allBtns = document.querySelectorAll('ul button')
+
+      // allBtns[0].addEventListener('click',function(e){
+      //   // console.log(e);
+      //   // e.target -> element where event happend 
+      //   e.target.parentElement.remove();
+      // })
   
+      for(let i=0;i<allBtns.length;i++){
+        allBtns[i].addEventListener('click',function(e){
+          // console.log(e.target);
+          e.target.parentElement.remove();
+        })
+      }
     </script>
   </body>
 </html>

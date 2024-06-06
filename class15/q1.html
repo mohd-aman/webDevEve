@@ -8,11 +8,18 @@
   </head>
   <body>
     <button>Say Hello</button>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
+    
     <script>
         //Q1 on Clicking the Button append hello to the page
-       
+       let btn = document.querySelector('button');
+ 
+       btn.addEventListener('click',function(){
+        let pElement = document.createElement('p');
+        pElement.innerText = 'Hello';
+
+        let body = document.querySelector('body');
+        body.appendChild(pElement);
+       })
 
     </script>
 </body>

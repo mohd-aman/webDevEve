@@ -31,7 +31,7 @@
         background-color: red;
         box-shadow: 0px 0px 6px 5px;
       }
-
+      
       .card {
         border: 1px solid;
         height: 10rem;
@@ -53,10 +53,25 @@
     <div class="card" data-color="green"></div>
     <div class="card" data-color="blue"></div>
     <script>
-      // Q Write a script which fetches the data-color attribute of the card on 
-      //div the fetched class to that card.
+// Q Write a script which fetches the data-color attribute of the card on 
+      //double clicking on them and attaches the fetched class to that card.
       // Also changes the data-color attribute to "used"
 
+
+      //make it work for one
+      // let card = document.querySelector('.card');
+      // let color = card.getAttribute('data-color');
+      // card.classList.add(color);
+      // card.setAttribute('data-colour','used');
+      
+     
+      //make it work for all
+      // let cards = document.querySelectorAll('.card');
+      // for(let i=0;i<cards.length;i++){
+      //   let color = cards[i].getAttribute('data-color');
+      //   cards[i].classList.add(color);
+      //   cards[i].setAttribute('data-color','used');
+      // }
      
     </script>
   </body>
