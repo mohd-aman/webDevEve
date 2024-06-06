@@ -30,7 +30,15 @@
       <div class="ball"></div>
     </div>
     <script>
+
+      let allBalls = document.querySelectorAll('.ball');
+      for(let i=0;i<allBalls.length;i++){
+        allBalls[i].style.background = 'blue';
+      }
         
+        //to make the change for one ball same logic will be applied to all
+        // let ballElement = document.querySelector('.ball');
+        // ballElement.style.background = 'blue'
     </script>
   </body>
 </html>
