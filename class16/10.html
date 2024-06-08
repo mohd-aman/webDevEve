@@ -16,6 +16,30 @@
       //        two new buttons are created in it's place. and newly created button 
       // should have the same functionality
     
+      let btn = document.querySelector('button');
+      let btnWrapper = document.querySelector('#doubleHolder');
+
+      window.addEventListener('click',function(e) {
+
+        console.log(e.target);
+        console.log(e.target.className);
+        if(e.target.className == 'double'){ // btn is clicked
+          e.target.remove();
+          
+          let newBtn1 = document.createElement('button');
+          let newBtn2 = document.createElement('button');
+          
+          newBtn1.innerText = 'double';
+          newBtn2.innerText = 'double';
+          
+          newBtn1.setAttribute('class','double');
+          newBtn2.setAttribute('class','double');
+
+          btnWrapper.appendChild(newBtn1);
+          btnWrapper.appendChild(newBtn2);
+        }
+       
+      })
 
     </script>
   </body>
