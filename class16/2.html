@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>0</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+
+    <script>
+      // Fix the list by inserting the missing element using querySelectorAll and insertBefore
+      // <li>6></li> 
+
+      let liToAdd = document.createElement('li');
+      liToAdd.innerText = '6';
+
+      let ul = document.querySelector('ul');
+
+      let allLi = document.querySelectorAll('li');
+      let liBefore = allLi[6];
+      
+      ul.insertBefore(liToAdd,liBefore);
+      
+    </script>
+  </body>
+</html>
