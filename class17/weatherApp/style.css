@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main, form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    height: 85vh;
+    background-color: #F3F7EC;
+    
+}
+
+main > div{
+    margin: 1rem;
+    font-weight: 600;
+}
+
+form {
+    height: 15vh;
+    background-color: #E88D67;
+}
+
+input{
+    width: 40vw;
+    border:none;
+    outline:none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-bottom: 3px solid #006989;
+    background: transparent;
+}
+
+button{
+    height: 3rem;
+    width: 8rem;
+    border: none;
+    background-color: #005C78;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    color:#F3F7EC;
+    cursor: pointer;
+}

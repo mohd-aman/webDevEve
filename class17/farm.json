@@ -1,0 +1,22 @@
+[{
+    "name":"Farm 1",
+    "products":["Eggs","Veg","Milk"],
+    "registrationNo":439043,
+    "Employees":70,
+    "isOperating":true
+},
+{
+    "name":"Farm 2",
+    "products":["Cheese","Eggs"],
+    "registrationNo":9089089,
+    "Employees":50,
+    "isOperating":false
+},{
+    "name":"Farm 3",
+    "products":["Veg","Eggs"],
+    "registrationNo":34389,
+    "Employees":20,
+    "isOperating":true
+}
+]
+
