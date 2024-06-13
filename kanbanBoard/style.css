@@ -99,9 +99,10 @@
     left: 50%;
     top:50%;
     transform: translate(-50%,-50%);
-    display: flex;
+    /* initially make modal cont hidden  */
+    display: none;
     border: 2px solid grey;
-    
+
 }
 
 .textarea-cont{
