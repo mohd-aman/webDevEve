@@ -60,3 +60,74 @@
 .remove-btn{
     font-size: 1.25rem;
 }
+
+.main-cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.ticket-cont{
+    height: 10rem;
+    width: 15rem;
+    background-color: coral;
+    
+}
+
+.ticket-color{
+    height: 1rem;
+}
+
+.ticket-id{
+    height: 1.5rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.task-area{
+    height: 7.5rem;
+    padding: 5px;
+    font-size: 1.25rem;
+}
+
+.modal-cont{
+    height: 50vh;
+    width: 50vw;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    border: 2px solid grey;
+    
+}
+
+.textarea-cont{
+    width: 80%;
+    resize: none;
+    border: none;
+    outline: none;
+    padding: 2rem;
+    font-size: 2rem;
+    border-right: 2px solid grey;
+}
+
+.priority-color-cont{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.priority-color{
+    height: 3rem;
+    width: 5rem;
+}
+
+.active{
+    border:5px solid grey;
+}
