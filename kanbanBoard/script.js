@@ -1,7 +1,10 @@
 const addBtn = document.querySelector('.add-btn');
 const modalCont = document.querySelector('.modal-cont');
+const textArea = document.querySelector('textarea');
+const mainCont = document.querySelector('.main-cont');
 
 let isModalOpen = false;
+var uid = new ShortUniqueId();
 
 addBtn.addEventListener('click',function(){
     if(isModalOpen){
@@ -15,3 +18,30 @@ addBtn.addEventListener('click',function(){
     }
     // isModalOpen = !isModalOpen;  
 })
+
+textArea.addEventListener('keydown',function(e){
+    // console.log(e);
+    if(e.key == 'Enter'){
+        // console.log("Enter pressed now move to second objective which hide the modal")
+        modalCont.style.display = 'none'; // change in UI only.
+        isModalOpen = false;
+        const task = textArea.value;
+        textArea.value = ''; // reset the value;
+        createTicket(task);
+    }
+})
+
+function createTicket(task){
+    // <div class="ticket-cont">
+        // <div class="ticket-color green"></div>
+        // <div class="ticket-id">#4qoiep3</div>
+        // <div class="task-area">Learn HTML</div>
+    // </div>
+    const id = uid.rnd();
+    const div = document.createElement('div');
+    div.className = 'ticket-cont';
+    div.innerHTML = `<div class="ticket-color green"></div> 
+                     <div class="ticket-id">#${id}</div>
+                     <div class="task-area">${task}</div>`;
+    mainCont.appendChild(div);
+}
