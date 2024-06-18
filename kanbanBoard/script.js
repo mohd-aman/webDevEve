@@ -105,14 +105,36 @@ function createTicket(task,priorityColor){
     ticket.className = 'ticket-cont';
     ticket.innerHTML = `<div class="ticket-color ${priorityColor}"></div> 
                      <div class="ticket-id">#${id}</div>
-                     <div class="task-area">${task}</div>`;
+                     <div class="task-area">${task}</div>
+                     <div class="lock-unlock"><i class="fa-solid fa-lock"></i></div>`;
     mainCont.appendChild(ticket);
     // console.log(ticket);
+    //remove ticket
     ticket.addEventListener('click',function(){
         if(deleteFlag)
             ticket.remove();
     })
 
+
+    //lock and unlock
+    const lockUnlockIcon = ticket.querySelector('.fa-solid');
+    const taskArea = ticket.querySelector('.task-area');
+    lockUnlockIcon.addEventListener('click',function(e){
+        
+        if(e.target.classList.contains('fa-lock')){
+            e.target.classList.remove('fa-lock');
+            e.target.classList.add('fa-lock-open');
+            taskArea.setAttribute('contenteditable',true);
+        }else{
+            e.target.classList.remove('fa-lock-open');
+            e.target.classList.add('fa-lock');
+            taskArea.setAttribute('contenteditable',false);
+        }
+       
+    })
+
+
+    //change priority of ticket
     const ticketColorBand = ticket.querySelector('.ticket-color');
     ticketColorBand.addEventListener('click',function(e){
         console.log(e.target.classList[1])
