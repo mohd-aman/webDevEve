@@ -7,6 +7,7 @@ const allPriorityColors = document.querySelectorAll('.priority-color');
 const allFiltercolor = document.querySelectorAll('.color');
 
 
+const colors = ['red','blue','green','black'];
 let isModalOpen = false;
 let deleteFlag = false; // true means it is red;
 let ticketPriorityColor = 'red';
@@ -110,5 +111,30 @@ function createTicket(task,priorityColor){
     ticket.addEventListener('click',function(){
         if(deleteFlag)
             ticket.remove();
+    })
+
+    const ticketColorBand = ticket.querySelector('.ticket-color');
+    ticketColorBand.addEventListener('click',function(e){
+        console.log(e.target.classList[1])
+        // ['red','blue','green','black']
+        const currentColorClass = e.target.classList[1];
+        e.target.classList.remove(currentColorClass);
+        let currentColorIndex = colors.indexOf(currentColorClass);
+        // for(let j=0;j<colors.length;j++){
+        //     if(colors[j] == currentColorClass){
+        //         currentColorIndex = j;
+        //         break;
+        //     }
+        // }
+        // a/b -> the remainder will alwasy be less than b
+        // 0/4 -> 0,0-r
+        // 1/4 -> 0,1-r
+        // 2/4 -> 0,2-r
+        // 3/4 -> 0,3-r
+        // 4/4 -> 1,0-r
+        const nextColorIndex = (currentColorIndex+1)%colors.length;
+        const nextColorClass = colors[nextColorIndex];
+        console.log(nextColorClass);
+        e.target.classList.add(nextColorClass);
     })
 }
