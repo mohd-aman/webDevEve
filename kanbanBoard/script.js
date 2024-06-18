@@ -4,11 +4,42 @@ const modalCont = document.querySelector('.modal-cont');
 const textArea = document.querySelector('textarea');
 const mainCont = document.querySelector('.main-cont');
 const allPriorityColors = document.querySelectorAll('.priority-color');
+const allFiltercolor = document.querySelectorAll('.color');
+
 
 let isModalOpen = false;
 let deleteFlag = false; // true means it is red;
 let ticketPriorityColor = 'red';
 var uid = new ShortUniqueId();
+
+
+for(let i=0;i<allFiltercolor.length;i++){
+    allFiltercolor[i].addEventListener('click',function(e){
+        // console.log(e.target.classList[1]);
+        const selectedColor = e.target.classList[1];
+        // console.log(selectedColor);
+        const allTicketsPriority = document.querySelectorAll('.ticket-color');
+        
+        for(let j=0;j<allTicketsPriority.length;j++){
+            // console.log(allTicketsPriority[j].classList[1])
+            const ticketPriorityColor = allTicketsPriority[j].classList[1];
+            if(selectedColor == ticketPriorityColor){
+                allTicketsPriority[j].parentElement.style.display = 'block';
+            }else{
+                allTicketsPriority[j].parentElement.style.display = 'none';
+            }
+        }
+    })
+
+    allFiltercolor[i].addEventListener('dblclick',function(){
+        const allTickets = document.querySelectorAll('.ticket-cont');
+        // console.log(allTickets);
+        for(let j=0;j<allTickets.length;j++){
+            // console.log(allTickets[j]);
+            allTickets[j].style.display = 'block'; // show the tickets
+        }
+    })
+}
 
 addBtn.addEventListener('click',function(){
     if(isModalOpen){
