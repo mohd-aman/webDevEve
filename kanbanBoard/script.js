@@ -127,13 +127,21 @@ function createTicket(ticketId,task,priorityColor){
     let ticketObj = {id:id,task:task,color:priorityColor};
     ticketsArr.push(ticketObj); // adding the ticket information to the ticket array.
     console.log(ticketsArr);
-    let stringifiedTicketArr = JSON.stringify(ticketsArr);
-    localStorage.setItem('ticketsDetail',stringifiedTicketArr);
+    updateLocalStorage();
     // console.log(ticket);
     //remove ticket
     ticket.addEventListener('click',function(){
-        if(deleteFlag)
-            ticket.remove();
+        if(deleteFlag){
+            ticket.remove(); //removing ticket from the UI.
+            //suppose id = mgDS5r
+            // [{"id":"3LmYNT","task":"Ticket 1","color":"red"},{…"id":"mgDS5r","task":"ticket 4","color":"black"}]
+            let index = ticketsArr.findIndex(function(ticketObj){
+                return ticketObj.id == id;
+            }) 
+            ticketsArr.splice(index,1);
+            console.log(ticketsArr);
+            updateLocalStorage();
+        }
     })
 
 
@@ -150,8 +158,13 @@ function createTicket(ticketId,task,priorityColor){
             e.target.classList.remove('fa-lock-open');
             e.target.classList.add('fa-lock');
             taskArea.setAttribute('contenteditable',false);
+            let index = ticketsArr.findIndex(function(ticketObj){
+                return ticketObj.id == id;
+            })
+            ticketsArr[index].task = taskArea.innerText;
+            console.log(ticketsArr);
+            updateLocalStorage();
         }
-       
     })
 
 
@@ -179,5 +192,16 @@ function createTicket(ticketId,task,priorityColor){
         const nextColorClass = colors[nextColorIndex];
         console.log(nextColorClass);
         e.target.classList.add(nextColorClass);
+        let index = ticketsArr.findIndex(function(ticketObj){
+            return ticketObj.id == id;
+        })
+        ticketsArr[index].color = nextColorClass;
+        console.log(ticketsArr);
+        updateLocalStorage();
     })
+}
+
+function updateLocalStorage(){
+    let stringifiedTicketArr = JSON.stringify(ticketsArr);
+    localStorage.setItem('ticketsDetail',stringifiedTicketArr);
 }
