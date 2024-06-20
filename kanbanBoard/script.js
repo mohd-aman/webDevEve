@@ -106,6 +106,10 @@ for(let i=0;i<allPriorityColors.length;i++){
 }
 
 function createTicket(ticketId,task,priorityColor){
+    if(task == ""){
+       alert("Please add a task")
+        return;
+    }
     let id;
     if(ticketId){
         id = ticketId; // it means generating ticket from localStorage data
