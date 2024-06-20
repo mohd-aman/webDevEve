@@ -11,7 +11,18 @@ const colors = ['red','blue','green','black'];
 let isModalOpen = false;
 let deleteFlag = false; // true means it is red;
 let ticketPriorityColor = 'red';
+let ticketsArr = []; // maintaining array of tickets to store it in local storage
 var uid = new ShortUniqueId();
+
+
+if(localStorage.getItem('ticketsDetail')){
+    let stringifiedArr = localStorage.getItem('ticketsDetail');
+    let arr = JSON.parse(stringifiedArr);
+    for(let i=0;i<arr.length;i++){
+        let ticketObj = arr[i];
+        createTicket(ticketObj.id,ticketObj.task,ticketObj.color);
+    }
+}
 
 
 for(let i=0;i<allFiltercolor.length;i++){
@@ -74,7 +85,7 @@ textArea.addEventListener('keydown',function(e){
         isModalOpen = false;
         const task = textArea.value;
         textArea.value = ''; // reset the value;
-        createTicket(task,ticketPriorityColor);
+        createTicket(undefined,task,ticketPriorityColor);
     }
 })
 
@@ -94,20 +105,30 @@ for(let i=0;i<allPriorityColors.length;i++){
     })
 }
 
-function createTicket(task,priorityColor){
+function createTicket(ticketId,task,priorityColor){
+    let id;
+    if(ticketId){
+        id = ticketId; // it means generating ticket from localStorage data
+    }else{
+        id = uid.rnd(); // it means generating ticket from UI
+    }
     // <div class="ticket-cont">
         // <div class="ticket-color green"></div>
         // <div class="ticket-id">#4qoiep3</div>
         // <div class="task-area">Learn HTML</div>
     // </div>
-    const id = uid.rnd();
     const ticket = document.createElement('div');
     ticket.className = 'ticket-cont';
     ticket.innerHTML = `<div class="ticket-color ${priorityColor}"></div> 
                      <div class="ticket-id">#${id}</div>
                      <div class="task-area">${task}</div>
                      <div class="lock-unlock"><i class="fa-solid fa-lock"></i></div>`;
-    mainCont.appendChild(ticket);
+    mainCont.appendChild(ticket); // generated ticket on the UI.
+    let ticketObj = {id:id,task:task,color:priorityColor};
+    ticketsArr.push(ticketObj); // adding the ticket information to the ticket array.
+    console.log(ticketsArr);
+    let stringifiedTicketArr = JSON.stringify(ticketsArr);
+    localStorage.setItem('ticketsDetail',stringifiedTicketArr);
     // console.log(ticket);
     //remove ticket
     ticket.addEventListener('click',function(){
