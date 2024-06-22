@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propation</title>
+    <style>
+        body{
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .grandParent{
+            height: 500px;
+            width: 500px;
+            background-color: brown;
+            display: flex;
+        }
+        .parent{
+            height: 300px;
+            width: 300px;
+            background-color: thistle;
+            display: flex;
+            margin: auto;
+        }
+        .child{
+            height: 100px;
+            width: 100px;
+            background-color: rosybrown;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="grandParent">
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+    </div>
+    
+    <script>
+        let body = document.querySelector('body');
+        let grandParent = document.querySelector('.grandParent');
+        let parent = document.querySelector('.parent');
+        let child = document.querySelector('.child');
+        
+        //Outpt -> Parent, Child, GrandParent and Body.
+
+        body.addEventListener('click',function(){
+            console.log('Body');
+        });
+
+        grandParent.addEventListener('click',function(){
+            console.log('GrandParent');
+        }) 
+
+        parent.addEventListener('click',function(e){
+            console.log('Parent')
+            // console.log("Target: ",e.target); //it returs element where event happened/occured.
+            // console.log("Current Target: ",e.currentTarget); // it returns element where eventListener was added.
+        }) 
+
+        child.addEventListener('click',function(){
+            console.log('Child')
+        })
+
+    </script>
+</body>
+</html>
