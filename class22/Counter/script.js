@@ -1,6 +1,6 @@
 const IncrementBtn = document.querySelector('#plus');
 const DecrementBtn = document.querySelector('#minus');
-const CountElement = document.querySelector('#count');
+const CountElement = document.querySelector('#count span');
 const InputElement = document.querySelector('input');
 
 let count = 0;
@@ -17,7 +17,7 @@ InputElement.addEventListener('change',function(){
 
 IncrementBtn.addEventListener('click',function(e){
     count+=incrementDecrementBy;
-    CountElement.innerText = "Counter : " + count;
+    CountElement.innerText = count;
 })
 
 
@@ -26,5 +26,5 @@ DecrementBtn.addEventListener('click',function(e){
         return;
     }
     count-=incrementDecrementBy;
-    CountElement.innerText = "Counter : " + count;
+    CountElement.innerText = count;
 })
