@@ -40,31 +40,31 @@
     </div>
     
     <script>
-        let body = document.querySelector('body');
         let grandParent = document.querySelector('.grandParent');
         let parent = document.querySelector('.parent');
         let child = document.querySelector('.child');
-        
-        //Outpt -> Parent, Child, GrandParent and Body.
 
-        body.addEventListener('click',function(){
-            console.log('Body');
-        });
-
-        grandParent.addEventListener('click',function(){
+        grandParent.addEventListener('click',function(e){
+            console.log(e.eventPhase);
             console.log('GrandParent');
-        }) 
+            e.stopPropagation();
+        },true) 
 
         parent.addEventListener('click',function(e){
+            console.log(e.eventPhase);
             console.log('Parent')
+            // e.stopPropagation();
             // console.log("Target: ",e.target); //it returs element where event happened/occured.
             // console.log("Current Target: ",e.currentTarget); // it returns element where eventListener was added.
         }) 
 
-        child.addEventListener('click',function(){
+        child.addEventListener('click',function(e){
+            console.log(e.eventPhase);
             console.log('Child')
+            // e.stopPropagation();
         })
-
+// Q.on click of child execute parent handler only 
     </script>
 </body>
 </html>
+
