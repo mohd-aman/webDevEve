@@ -13,7 +13,7 @@ starContainer.addEventListener("click",function(e){
     const starNum = e.target.dataset.pos;
     // console.log(starNum);
     addColorToStar(starNum);
-    rating.innerText = starNum;
+    rating.innerText = starNum; //updating the UI
 })
 
 starContainer.addEventListener("mouseover",function(e){

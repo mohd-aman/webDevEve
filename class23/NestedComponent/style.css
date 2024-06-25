@@ -1,0 +1,23 @@
+.container{
+padding: 1rem;
+}
+
+.comment-container{
+    border-left: 1px solid black;
+    padding: 1rem;
+    margin-left: 4rem;
+}
+
+.reply{
+    color: rebeccapurple;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.reply:hover{
+    cursor: pointer;
+}
+
+.comment-reply-container{
+    margin-left: 5rem;
+}
