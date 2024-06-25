@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.star-container{
+    font-size: 3rem;
+}
+
+.star-container span{
+    cursor: pointer;
+}
+
+.gold{
+    color: gold;
+}
