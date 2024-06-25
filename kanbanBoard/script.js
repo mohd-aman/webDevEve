@@ -5,6 +5,7 @@ const textArea = document.querySelector('textarea');
 const mainCont = document.querySelector('.main-cont');
 const allPriorityColors = document.querySelectorAll('.priority-color');
 const allFiltercolor = document.querySelectorAll('.color');
+const actionBtnContainer = document.querySelector('.action-btn-container')
 
 
 const colors = ['red','blue','green','black'];
@@ -53,29 +54,53 @@ for(let i=0;i<allFiltercolor.length;i++){
     })
 }
 
-addBtn.addEventListener('click',function(){
-    if(isModalOpen){
-        //close the modal or hide the modal
-        modalCont.style.display = 'none'; // making change only in the UI;
-        isModalOpen = false; // making the change in our variable about modal
-    }else{
-        //show the modal
-        modalCont.style.display = 'flex'; // making this change in the UI
-        isModalOpen = true; // making the change in our variable about modal
-    }
-    // isModalOpen = !isModalOpen;  
-})
 
-deleteBtn.addEventListener('click',function(){
-    console.log("deleteBtn clicked");
-    if(deleteFlag){
-        deleteFlag = false;
-        deleteBtn.style.color = 'black';
-    }else{
-        deleteFlag = true;
-        deleteBtn.style.color = 'red';
+actionBtnContainer.addEventListener('click',function(e){
+    console.log(e.target);
+    if(e.target.classList.contains('fa-plus')){
+        if(isModalOpen){
+            //close the modal or hide the modal
+            modalCont.style.display = 'none'; // making change only in the UI;
+            isModalOpen = false; // making the change in our variable about modal
+        }else{
+            //show the modal
+            modalCont.style.display = 'flex'; // making this change in the UI
+            isModalOpen = true; // making the change in our variable about modal
+        }
+        // isModalOpen = !isModalOpen; 
+    }else if(e.target.classList.contains('fa-trash')){
+        if(deleteFlag){
+            deleteFlag = false;
+            deleteBtn.style.color = 'black';
+        }else{
+            deleteFlag = true;
+            deleteBtn.style.color = 'red';
+        }
     }
-});
+})
+// addBtn.addEventListener('click',function(){
+//     if(isModalOpen){
+//         //close the modal or hide the modal
+//         modalCont.style.display = 'none'; // making change only in the UI;
+//         isModalOpen = false; // making the change in our variable about modal
+//     }else{
+//         //show the modal
+//         modalCont.style.display = 'flex'; // making this change in the UI
+//         isModalOpen = true; // making the change in our variable about modal
+//     }
+//     // isModalOpen = !isModalOpen;  
+// })
+
+// deleteBtn.addEventListener('click',function(){
+//     console.log("deleteBtn clicked");
+//     if(deleteFlag){
+//         deleteFlag = false;
+//         deleteBtn.style.color = 'black';
+//     }else{
+//         deleteFlag = true;
+//         deleteBtn.style.color = 'red';
+//     }
+// });
 
 textArea.addEventListener('keydown',function(e){
     // console.log(e);
