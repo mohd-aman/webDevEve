@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+<body>
+    <label >
+        Search
+        <input type="text">
+    </label>
+    <script>
+        const input = document.querySelector('input');
+        let count = 1;
+
+        function dummyNetworkCall(){
+            console.log("Network call : ",count++)
+        }
+
+        let debounceDummyNetworkCall = debounce(dummyNetworkCall,1000);
+
+        input.addEventListener('keydown',debounceDummyNetworkCall)
+        
+        //expectation from the debounce function: accept fxn,delay and returns debounceFxn
+        function debounce(cb,delay){
+            let timerId;
+            return function(){
+                clearTimeout(timerId);// clearing the prev setTimeout
+                timerId = setTimeout(cb,delay); //updating the timerId
+            }
+        }
+    </script>
+</body>
+</html>

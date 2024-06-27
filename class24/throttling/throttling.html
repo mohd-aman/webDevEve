@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttle</title>
+    <style>
+        body,html{
+            height:30000px
+        }
+        .status{
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            background-color: brown;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="status">Scroll Position: <span id="scrollPosition">0</span></div>
+    <script>
+        const span = document.querySelector("#scrollPosition")
+        let count = 1;
+        let lastScrollTime = 0;
+
+        function updateScrollPosition(){
+            console.log("Scrolll Event Handler: ",count++)
+            span.innerText = window.scrollY;
+        }
+
+        function OptimisedUpdateScrollPosition(){
+            let currentTime = new Date().getTime();
+            // console.log(now);
+            if(currentTime - lastScrollTime>500){
+                updateScrollPosition();
+                lastScrollTime = currentTime;
+            }
+        }
+
+        window.addEventListener('scroll',OptimisedUpdateScrollPosition)
+
+        
+    </script>
+</body>
+</html>
