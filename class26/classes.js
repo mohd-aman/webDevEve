@@ -44,8 +44,8 @@ class StuffedCrustPizza extends Pizza{
 
     //override the describe method of parent class
     describe(){
-        super.describe();
-        this.describeStuffing();
+        super.describe(); // invoking describe method of parent class.
+        this.describeStuffing(); //invoking method of own class.
     }
 }
 
