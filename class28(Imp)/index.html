@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind</title>
+</head>
+<body>
+    <button id="introduceBtn"> Introduce Alice</button>
+    <script>
+        const introduceBtn = document.querySelector('#introduceBtn');
+        const alice = {
+            name:'Alice',
+            age:30,
+            introduce:function(){
+                console.log(this);
+                console.log(`My name is ${this.name} and my age is ${this.age}`);
+            }
+        }
+
+        // const bindedFxn = alice.introduce.bind(alice);
+        // introduceBtn.addEventListener('click',bindedFxn);
+
+        // let num = [1,2,3,5];
+        // console.log(...num);
+
+        // function fxn(...args){
+        //     console.log(args);
+        // }
+        // fxn('param3','fds',3,5,7,8,0,4,32,1);
+
+    </script>
+</body>
+</html>
