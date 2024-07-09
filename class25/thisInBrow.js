@@ -11,14 +11,14 @@ let obj = {
     name:"person",
     age:"no idea",
     fxn:function(){
-        // console.log(this);
-        return function(){
-            console.log(this);  
-        }
+        console.log(this);
+        // return function(){
+        //     console.log(this);  
+        // }
     }
 }
  
-// obj.fxn(); //method invocation, object itself
+obj.fxn(); //method invocation, object itself
 
 // let fxnExpression = obj.fxn; // function(){console.log(this};
 // fxnExpression(); //function invocation, direct invocation
