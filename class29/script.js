@@ -1,4 +1,4 @@
-let arr = [3, ,34, ,  , , ,23];
+let arr = [3, 3,34,3,23];
 
 // arr.push(10);
 console.log(arr);
@@ -15,7 +15,7 @@ console.log(arr);
 
 // console.log(doubleArr);
 
-Array.prototype.myMap = function(callbackFxn){
+Array.prototype.myMap = function myMap(callbackFxn){
     console.log(this);  
     if(typeof callbackFxn !== 'function'){
         throw new TypeError(`${callbackFxn} is not a function`)
@@ -24,7 +24,7 @@ Array.prototype.myMap = function(callbackFxn){
     let newArr = [];
     for(let i=0;i<arr.length;i++){
         console.log(i);
-        if(i in arr){
+        if(i in arr){ // checking for sparse arrays.
             const elem = arr[i];
             newArr[i] = callbackFxn(elem,i);
         }
@@ -34,11 +34,11 @@ Array.prototype.myMap = function(callbackFxn){
 }
 
 
-let doubleArr = arr.myMap(function(elem){
-    return 2*elem;
-}); // method invocation.
+// let doubleArr = arr.myMap(function(elem){
+//     return 2*elem;
+// }); // method invocation.
 
-console.log(doubleArr);
+// console.log(doubleArr);
 
 // let c = [3,4,5,68,6,4];
 // const d = c.myMap(function(elem,index){
@@ -50,9 +50,9 @@ console.log(doubleArr);
 
 // const w = c.myMap(4);
 
-function even(elem,index){
-    return elem%2 === 0;
-}
+// function even(elem,index){
+//     return elem%2 === 0;
+// }
 
 // const evenArr = arr.filter(even)
 
@@ -76,3 +76,38 @@ Array.prototype.myFilter = function myFilter(callbackFxn){
 
 // const evenArr2 = arr.myFilter(even)
 // console.log(evenArr2);
+
+
+Array.prototype.myReduce = function myReduce(callbackFxn,initialValue){
+    if(typeof callbackFxn !== 'function'){
+        throw new TypeError(`${callbackFxn} is not a function`);
+    }
+    
+    console.log(this);//array;
+    const arr = this;
+
+    if(arr.length === 0 && arguments.length === 1){
+        throw new Error("Reduce of empty array with no initial value")
+    }
+
+    let accumulator = initialValue?initialValue:arr[0];
+    let startIndex = initialValue?0:1;
+    for(let i=startIndex;i<arr.length;i++){
+        if(i in arr){ //sparse array element
+            const elem = arr[i];
+            accumulator = callbackFxn(accumulator,elem);
+        }
+    }
+    return accumulator;
+}
+
+
+function reduceCallback(accumulator,element){
+    return accumulator + element;
+}
+
+
+// const sum = [].reduce(reduceCallback)
+// console.log(sum);
+const sum2 = [].myReduce(reduceCallback);
+console.log(sum2);
