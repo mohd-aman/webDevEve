@@ -6,8 +6,8 @@ function fetchUserData(){
 
 function fetchPostData(){
     return new Promise(function(resolve,reject){
-        // setTimeout(()=>resolve(["post1","post2","post3"],1000));
-        setTimeout(()=>reject("Error"),2000);
+        setTimeout(()=>resolve(["post1","post2","post3"],1000));
+        // setTimeout(()=>reject("Error"),2000);
     })
 }
 
