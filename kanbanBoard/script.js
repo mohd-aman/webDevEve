@@ -135,6 +135,8 @@ function createTicket(ticketId,task,priorityColor){
        alert("Please add a task")
         return;
     }
+
+    // let id = ticketId || uid.rnd();
     let id;
     if(ticketId){
         id = ticketId; // it means generating ticket from localStorage data
