@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    
+    <!-- core react  -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- react dom  -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <!-- <h1 id="heading" class="">Hello world</h1> -->
+     <div id="root">
+
+     </div>
+     <script>
+        const rootElement = document.querySelector("#root");
+        // const h1Element = document.createElement("h1");
+        // h1Element.innerText = "Hello world";
+        // console.log(h1Element);
+        // const bodyElement = document.querySelector("body");
+        // bodyElement.appendChild(h1Element);
+
+        //hello world with react
+        // <div>
+        //     <h1>heading 1</h1>
+        //     <h2>heading 2</h2>
+        //     </div>
+
+        //This is not supported by browser
+        const h1Element = <h1>Hello, world!</h1>;
+
+        // const h1Element = React.createElement('h1',{id:'heading',className:'one'},"Hello world");
+        
+        const h2Element = React.createElement('h2',{className:'two'},"I am heading 2");
+        const divElement = React.createElement('div',{className:"parent-div"},[h1Element,h2Element]);
+        ReactDOM.render(divElement,rootElement);
+        console.log(h1Element);
+     </script>
+</body>
+</html>
