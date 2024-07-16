@@ -9,13 +9,16 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <!-- react dom  -->
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <!-- <h1 id="heading" class="">Hello world</h1> -->
-     <div id="root">
+    <h1>Not part of your react code</h1> 
+    <div id="root">
 
      </div>
-     <script>
+     <div>fjdka</div>
+     <script type="text/babel">
         const rootElement = document.querySelector("#root");
         // const h1Element = document.createElement("h1");
         // h1Element.innerText = "Hello world";
@@ -29,15 +32,25 @@
         //     <h2>heading 2</h2>
         //     </div>
 
-        //This is not supported by browser
-        const h1Element = <h1>Hello, world!</h1>;
+        //JSX is notsupported by browser
+
+        //Functional Component
+        function App(){
+            return(
+                <div>
+                    <h1>heading 1</h1>
+                    <h2>heading 2</h2>
+                </div>
+                // <h1>Hello, world!</h1>
+            )
+        }
 
         // const h1Element = React.createElement('h1',{id:'heading',className:'one'},"Hello world");
+        // const h2Element = React.createElement('h2',{className:'two'},"I am heading 2");
+        // const divElement = React.createElement('div',{className:"parent-div"},[h1Element,h2Element]);
         
-        const h2Element = React.createElement('h2',{className:'two'},"I am heading 2");
-        const divElement = React.createElement('div',{className:"parent-div"},[h1Element,h2Element]);
-        ReactDOM.render(divElement,rootElement);
-        console.log(h1Element);
+        ReactDOM.render(<App/>,rootElement);
+        // console.log(h1Element);
      </script>
 </body>
 </html>
