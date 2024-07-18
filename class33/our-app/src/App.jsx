@@ -1,6 +1,18 @@
 import './App.css';
 import Header from './Components/Header';
 import UserProfile from './Components/UserProfile';
+import Button from './Components/Button';
+import Counter from "./Components/Counter";
+
+
+const users = [
+  {name:"John",age:"15",location:"India"},
+  {name:"Anderson",age:"42",location:"England"},
+  {name:"Sky",age:"30",location:"India"},
+  {name:"Bumrah",age:"31",location:"Mumbai"},
+  {name:"Rohit",age:"30",location:"India"},
+  {name:"DK",age:"30",location:"India"},
+]
 
 function App() {
   return (
@@ -15,9 +27,12 @@ function App() {
       <Header/>
       <Header/> */}
       <Header/>
-      <UserProfile name="Anderson" age = "42" location="England" />
-      <UserProfile name="Sky" age="30" location="India"/>
-      <UserProfile name="Bumrah" age="31" location="Mumbai"/>
+      <Counter/>
+      {/* <Button/> */}
+      {/* <UserProfile name={users[0].name} age = "42" location="England" /> */}
+      {/* {users.map(function(user,index){
+        return <UserProfile key={index} name={user.name} age={user.age} location={user.location}/>
+      })} */}
     </>
   )
 }
