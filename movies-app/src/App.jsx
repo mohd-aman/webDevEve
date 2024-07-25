@@ -4,7 +4,6 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Banner from './Components/Banner'
 import Movies from './Components/Movies'
-import Pagination from './Components/Pagination'
 import WatchList from './Components/WatchList'
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
           <>
             <Banner/>
             <Movies/>
-            <Pagination/>
           </>
         }/>
         <Route path="/watchlist" element={

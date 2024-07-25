@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { BASE_URL } from '../utils/constants';
 
-const BASE_URL = "https://image.tmdb.org/t/p/original/"
 
 export default function Banner(){
     const [trendingMovie,setTrendingMovie] = useState(null);
@@ -10,7 +10,7 @@ export default function Banner(){
         axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=2634e9f079c604567d18059d526b4346')
         .then(function(res){
             let randomMovie = res.data.results[Math.floor(Math.random()*20)];
-            console.log(trendingMovie);
+            
             setTrendingMovie(randomMovie);
         })
     },[]);// only execute the callback on mounting 

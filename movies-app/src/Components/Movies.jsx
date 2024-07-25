@@ -1,10 +1,46 @@
+import axios from "axios";
+import { useEffect, useState } from "react"
+import { BASE_URL } from "../utils/constants";
+import MovieCard from "./MovieCard";
+import Pagination from "./Pagination";
+
 export default function Movies(){
+    const [movies,setMovies] = useState(null);
+    const [pageNo,setPageNo] = useState(1);
+
+    const handleNext = (e)=>{
+        console.log(e);
+        setPageNo(pageNo + 1);
+    }
+    const handlePrev = ()=>{
+        if(pageNo > 1)
+            setPageNo(pageNo - 1);
+    }
+
+    useEffect(()=>{
+        axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=2634e9f079c604567d18059d526b4346&page=${pageNo}`)
+        .then((res)=>{
+            setMovies(res.data.results);
+        })
+    },[pageNo])//it means execute callback on mounting as well as on pageNo updates
+    
+    if(!movies){
+        return <h1>...Loading</h1>
+    }
+
     return(
+        <>
+             <h1 className="text-center	m-12 text-4xl">Trending Movies</h1>
+        
         <div className="flex flex-wrap justify-evenly	">
-            <div className="relative m-4 rounded overflow-hidden	">
-                <img className="h-[15rem] w-[10rem]" src="https://image.tmdb.org/t/p/original/ga4OLm4qLxPqKLMzjJlqHxVjst3.jpg&quot"/>
-                <p className="absolute bottom-0 text-white">Bad Boys: Ride or Die</p>
-            </div>
+       
+           {
+            movies.map((movie)=>{
+                return <MovieCard key={movie.id} title={movie.title} poster={BASE_URL+movie.backdrop_path}/>
+            })
+           }
         </div>
+        <Pagination pageNo={pageNo} handleNext={handleNext} handlePrev={handlePrev}/>
+        </>
     )
 }
