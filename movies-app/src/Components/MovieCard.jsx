@@ -1,5 +1,5 @@
 export default function MovieCard({
-  id,
+  movie,
   fav,
   title,
   poster,
@@ -14,9 +14,9 @@ export default function MovieCard({
       </p>
       <div className="absolute top-2 right-2 h-8 w-8 bg-black flex items-center justify-center rounded-lg">
         {fav ? (
-          <div onClick={() => removeFromWatchList(id)}>❌</div>
+          <div onClick={() => removeFromWatchList(movie)}>❌</div>
         ) : (
-          <div onClick={() => addToWatchList(id)}>😍</div>
+          <div onClick={() => addToWatchList(movie)}>😍</div>
         )}
       </div>
     </div>

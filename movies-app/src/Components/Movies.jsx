@@ -4,22 +4,13 @@ import { BASE_URL } from "../utils/constants";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
 
-export default function Movies() {
+export default function Movies({
+  watchList,
+  addToWatchList,
+  removeFromWatchList,
+}) {
   const [movies, setMovies] = useState(null);
   const [pageNo, setPageNo] = useState(1);
-  const [watchList, setWatchList] = useState(
-    JSON.parse(localStorage.getItem("watchList")) || []
-  );
-
-  const addToWatchList = (movieId) => {
-    const newWatchList = [...watchList, movieId];
-    setWatchList(newWatchList);
-  };
-
-  const removeFromWatchList = (movieId) => {
-    const filteredWatchList = watchList.filter((id) => id !== movieId);
-    setWatchList(filteredWatchList);
-  };
 
   const handleNext = (e) => {
     console.log(e);
@@ -28,10 +19,6 @@ export default function Movies() {
   const handlePrev = () => {
     if (pageNo > 1) setPageNo(pageNo - 1);
   };
-
-  useEffect(() => {
-    localStorage.setItem("watchList", JSON.stringify(watchList));
-  }, [watchList]);
 
   useEffect(() => {
     axios
@@ -46,7 +33,6 @@ export default function Movies() {
   if (!movies) {
     return <h1>...Loading</h1>;
   }
-  console.log(watchList);
   return (
     <>
       <h1 className="text-center	m-12 text-4xl">Trending Movies</h1>
@@ -56,8 +42,8 @@ export default function Movies() {
           return (
             <MovieCard
               key={movie.id}
-              id={movie.id}
-              fav={watchList.includes(movie.id)}
+              movie={movie}
+              fav={watchList.some((movieObj) => movieObj.id === movie.id)}
               addToWatchList={addToWatchList}
               removeFromWatchList={removeFromWatchList}
               title={movie.title}
