@@ -44,6 +44,7 @@ function App() {
           <WatchList
             movies = {watchList}
             removeFromWatchList={removeFromWatchList}
+            setWatchList = {setWatchList}
           />
         }/>
       </Routes>
