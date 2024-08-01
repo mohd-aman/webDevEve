@@ -1,11 +1,14 @@
+import { useContext } from "react";
+import MovieContext from "../Context/MovieContext";
+
 export default function MovieCard({
   movie,
   fav,
   title,
-  poster,
-  addToWatchList,
-  removeFromWatchList,
+  poster, 
 }) {
+
+  const {addToWatchList,removeFromWatchList} = useContext(MovieContext);
   return (
     <div className="hover:scale-105 duration-300  cursor-pointer	relative m-4 rounded-[1rem] overflow-hidden	">
       <img className="h-[20rem] w-[12rem] object-cover" src={poster} />

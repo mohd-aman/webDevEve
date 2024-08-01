@@ -1,16 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
+import MovieContext from "../Context/MovieContext";
 
-export default function Movies({
-  watchList,
-  addToWatchList,
-  removeFromWatchList,
-}) {
+export default function Movies() {
   const [movies, setMovies] = useState(null);
   const [pageNo, setPageNo] = useState(1);
+
+  const {watchList} = useContext(MovieContext)
 
   const handleNext = (e) => {
     console.log(e);
@@ -44,8 +43,6 @@ export default function Movies({
               key={movie.id}
               movie={movie}
               fav={watchList.some((movieObj) => movieObj.id === movie.id)}
-              addToWatchList={addToWatchList}
-              removeFromWatchList={removeFromWatchList}
               title={movie.title}
               poster={BASE_URL + movie.backdrop_path}
             />

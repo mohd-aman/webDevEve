@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BASE_URL, GENRES_ID_MAPPING, ALL_GENRES } from "../utils/constants";
+import MovieContext from "../Context/MovieContext";
 
-export default function WatchList({
-  movies,
-  removeFromWatchList,
-  setWatchList,
-}) {
+export default function WatchList() {
+  const {watchList:movies,setWatchList,removeFromWatchList} = useContext(MovieContext);
+  
   const [genres, setGenres] = useState([ALL_GENRES]);
   const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES);
   const [search, setSearch] = useState("");
