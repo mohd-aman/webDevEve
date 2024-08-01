@@ -4,20 +4,13 @@ import { BASE_URL } from "../utils/constants";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
 import MovieContext from "../Context/MovieContext";
+import PaginationContext from "../Context/PaginationContext";
 
 export default function Movies() {
+
+  const {watchList} = useContext(MovieContext);
+  const {pageNo} =  useContext(PaginationContext);
   const [movies, setMovies] = useState(null);
-  const [pageNo, setPageNo] = useState(1);
-
-  const {watchList} = useContext(MovieContext)
-
-  const handleNext = (e) => {
-    console.log(e);
-    setPageNo(pageNo + 1);
-  };
-  const handlePrev = () => {
-    if (pageNo > 1) setPageNo(pageNo - 1);
-  };
 
   useEffect(() => {
     axios
@@ -49,11 +42,7 @@ export default function Movies() {
           );
         })}
       </div>
-      <Pagination
-        pageNo={pageNo}
-        handleNext={handleNext}
-        handlePrev={handlePrev}
-      />
+      <Pagination/>
     </>
   );
 }
