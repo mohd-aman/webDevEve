@@ -10,7 +10,7 @@ const todoSlice = createSlice({
         setValue:(state,descObj)=>{
             state.currentTask = descObj.payload;
         },
-        addTodo:(state)=>{
+        addTodo:(state)=>{ //impure fxn , immer js take care of your impure fxn.
             state.todoList.push(state.currentTask);
             state.currentTask = "";
         }
