@@ -8,22 +8,11 @@ import Movies from "./Components/Movies";
 import WatchList from "./Components/WatchList";
 
 import MovieContext from "./Context/MovieContext";
-import PaginationContext from "./Context/PaginationContext";
 
 function App() {
   const [watchList, setWatchList] = useState(
     JSON.parse(localStorage.getItem("watchList")) || []
   );
-
-  const [pageNo, setPageNo] = useState(1);
-
-  const handleNext = (e) => {
-    console.log(e);
-    setPageNo(pageNo + 1);
-  };
-  const handlePrev = () => {
-    if (pageNo > 1) setPageNo(pageNo - 1);
-  };
 
   const addToWatchList = (movieToAdd) => {
     const newWatchList = [...watchList, movieToAdd];
@@ -53,9 +42,9 @@ function App() {
             element={
               <>
                 <Banner />
-                <PaginationContext.Provider
+                {/* <PaginationContext.Provider
                   value={{ pageNo, handleNext, handlePrev }}
-                >
+                > */}
                   <Movies
                   // watchList={watchList}
                   // addToWatchList={addToWatchList}
@@ -64,7 +53,7 @@ function App() {
                   // handleNext={handleNext}
                   // handlePrev={handlePrev}
                   />
-                </PaginationContext.Provider>
+                {/* </PaginationContext.Provider> */}
               </>
             }
           />

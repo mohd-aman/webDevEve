@@ -4,26 +4,24 @@ import { BASE_URL } from "../utils/constants";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
 import MovieContext from "../Context/MovieContext";
-import PaginationContext from "../Context/PaginationContext";
+import { useDispatch, useSelector } from "react-redux";
+import movieMiddleware from "../redux/Movie/movieMiddleware";
 
 export default function Movies() {
-
-  const {watchList} = useContext(MovieContext);
-  const {pageNo} =  useContext(PaginationContext);
-  const [movies, setMovies] = useState(null);
+  const { watchList } = useContext(MovieContext);
+  const { pageNo } = useSelector((store) => store.paginationState);
+  const { movies, loading, error } = useSelector((store) => store.moviesState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=2634e9f079c604567d18059d526b4346&page=${pageNo}`
-      )
-      .then((res) => {
-        setMovies(res.data.results);
-      });
+    dispatch(movieMiddleware(pageNo));
   }, [pageNo]); //it means execute callback on mounting as well as on pageNo updates
 
-  if (!movies) {
+  if (loading) {
     return <h1>...Loading</h1>;
+  }
+  if (error) {
+    return <h1>OPS... Error Occured</h1>;
   }
   return (
     <>
@@ -42,7 +40,7 @@ export default function Movies() {
           );
         })}
       </div>
-      <Pagination/>
+      <Pagination />
     </>
   );
 }
