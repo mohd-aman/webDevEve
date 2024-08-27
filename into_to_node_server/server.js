@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('http'); //inbuilt module in nodejs
 
 // console.log(http);
 
@@ -14,8 +14,8 @@ const data = {
 //create a server with the help http module
 const server = http.createServer((req,res)=>{
     // res.setHeader('Content-Type','text/html')
-    res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(data));
+    // res.setHeader("Content-Type", "application/json");
+    // res.end(JSON.stringify(data));
 
     //responding with html
     // res.write(`<html>
