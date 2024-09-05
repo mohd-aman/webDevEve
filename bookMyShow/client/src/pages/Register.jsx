@@ -1,7 +1,23 @@
-import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Form, Input, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { RegisterUser } from "../api/user";
 
 function Register() {
+  const navigate = useNavigate();
+  const handleFinish = async (values) => {
+    try {
+      const data = await RegisterUser(values);
+      if (data.success) {
+        message.success(data.message);
+        navigate('/login');
+      } else {
+        message.error(data.message);
+      }
+    } catch (err) {
+      message.error(err.message);
+    }
+  };
+
   return (
     <>
       <header className="App-header">
@@ -11,7 +27,7 @@ function Register() {
           </section>
 
           <section className="right-section">
-            <Form layout="vertical">
+            <Form layout="vertical" onFinish={handleFinish}>
               <Form.Item
                 label="Name"
                 htmlFor="name"
