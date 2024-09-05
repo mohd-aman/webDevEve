@@ -7,9 +7,11 @@ export default function Login() {
   const handleFinish = async (values)=>{
     try{
       const data = await LoginUser(values);
-      console.log(data);
       if(data.success){
         message.success(data.message);
+        const token = data.data;
+        console.log(token);
+        localStorage.setItem('token',token);
         navigate('/')
       }else{
         message.error(data.message);
