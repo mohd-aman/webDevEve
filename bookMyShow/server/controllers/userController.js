@@ -60,4 +60,21 @@ const readUser = async function (req, res) {
   }
 };
 
-module.exports = { createUser, readUser };
+const getCurrentUser = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const user = await UserModel.findById(userId).select("-password");
+    res.send({
+      success: true,
+      message: "You are Authenticated",
+      data: user,
+    });
+  } catch (err) {
+    res.send({
+      success: false,
+      message: err.message,
+    });
+  }
+}
+
+module.exports = { createUser, readUser,getCurrentUser };
