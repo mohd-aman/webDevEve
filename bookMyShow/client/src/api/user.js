@@ -1,11 +1,10 @@
 import { axiosInstance } from "./index";
 
+const BASE_URL = "http://localhost:8080/api/user";
+
 export const RegisterUser = async (values) => {
   try {
-    const response = await axiosInstance.post(
-      "http://localhost:8080/api/user/register",
-      values
-    );
+    const response = await axiosInstance.post(`${BASE_URL}/register`, values);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -14,10 +13,16 @@ export const RegisterUser = async (values) => {
 
 export const LoginUser = async (values) => {
   try {
-    const response = await axiosInstance.post(
-      "http://localhost:8080/api/user/login",
-      values
-    );
+    const response = await axiosInstance.post(`${BASE_URL}/login`, values);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const GetCurrentUser = async () => {
+  try {
+    const response = await axiosInstance.get(`${BASE_URL}/get-current-user`);
     return response.data;
   } catch (err) {
     console.log(err);
