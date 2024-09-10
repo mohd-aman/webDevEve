@@ -15,7 +15,7 @@ const PORT = 8080;
 app.use(express.json());//parse incoming json request
 app.use(cors());// allowing CORS requests
 app.use('/api/user',userRoute)
-app.use('/api/movies',movieRoute)
+app.use('/api/movie',movieRoute)
 
 
 
