@@ -20,6 +20,9 @@ export default function ProtectedRoute({ children }) {
       key: "home",
       label: "Home",
       icon: <HomeOutlined />,
+      onClick:()=>{
+        navigate("/");
+      }
     },
     {
       key: "user",
@@ -30,6 +33,11 @@ export default function ProtectedRoute({ children }) {
           key: "profile",
           label: "My Profile",
           icon: <UserOutlined />,
+          onClick:()=>{
+            // if(user.isAdmin){
+                navigate('/admin')
+            // }
+          }
         },
         {
           key: "logout",

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoute = require('./routes/userRoutes');
+const movieRoute = require('./routes/movieRoutes')
 
 require('dotenv').config();// load the environment variables
 
@@ -14,6 +15,7 @@ const PORT = 8080;
 app.use(express.json());//parse incoming json request
 app.use(cors());// allowing CORS requests
 app.use('/api/user',userRoute)
+app.use('/api/movies',movieRoute)
 
 
 
