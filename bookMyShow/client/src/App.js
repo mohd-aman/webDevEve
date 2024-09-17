@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import store from './redux/store';
 import Admin from "./pages/Admin/Admin";
+import Partner from "./pages/Partner/Partner";
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
           <Route path='/admin' element={
             <ProtectedRoute>
               <Admin/>
+            </ProtectedRoute>
+          }/>
+          <Route path='/partner' element={
+            <ProtectedRoute>
+              <Partner/>
             </ProtectedRoute>
           }/>
         </Routes>
