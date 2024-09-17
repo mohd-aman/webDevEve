@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 const userRoute = require('./routes/userRoutes');
 const movieRoute = require('./routes/movieRoutes');
 const theatreRoute = require('./routes/theatreRoutes');
+const showRoute = require('./routes/showRoutes');
 
 require('dotenv').config();// load the environment variables
 
@@ -18,6 +19,7 @@ app.use(cors());// allowing CORS requests
 app.use('/api/user',userRoute)
 app.use('/api/movie',movieRoute)
 app.use('/api/theatre',theatreRoute);
+app.use('/api/show',showRoute)
 
 
 
