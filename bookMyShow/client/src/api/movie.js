@@ -11,6 +11,15 @@ export const getAllMovies = async () => {
   }
 };
 
+export const getSingleMovie = async (id)=>{
+    try{
+        const resp = await axiosInstance.get(`${BASE_URL}/get/${id}`);
+        return resp.data;
+    }catch(err){
+        console.log(err);
+    }
+}
+
 export const addMovie = async (values) => {
   try {
     const response = await axiosInstance.post(`${BASE_URL}/add`, values);
