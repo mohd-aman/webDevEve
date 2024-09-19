@@ -5,7 +5,7 @@ import DeleteTheatreModal from "./DeleteTheatreModel";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { getAllTheatresForOwner } from "../../api/theatre";
 import { useSelector } from "react-redux";
-// import ShowModal from './ShowModal';
+import ShowModal from './ShowModal';
 
 const TheatreList = () => {
   const { user } = useSelector((state) => state.user);
@@ -139,9 +139,13 @@ const TheatreList = () => {
           getData={getData}
         />
       )}
-      {/* {
-          isShowModalOpen && <ShowModal isShowModalOpen={isShowModalOpen} setIsShowModalOpen={setIsShowModalOpen} selectedTheatre={selectedTheatre}/>
-        } */}
+      {isShowModalOpen && (
+        <ShowModal
+          isShowModalOpen={isShowModalOpen}
+          setIsShowModalOpen={setIsShowModalOpen}
+          selectedTheatre={selectedTheatre}
+        />
+      )}
     </>
   );
 };
