@@ -74,7 +74,7 @@ const addMovie = async (req, res) => {
 
 const getSingleMovie = async (req,res)=>{
     try{
-        const movie = await movieModel.findById(req.params.id);
+        const movie = await MovieModel.findById(req.params.id);
         res.send({
             success:true,
             message:"Movie fetched successfully",

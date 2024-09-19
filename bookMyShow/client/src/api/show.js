@@ -21,6 +21,15 @@ export const getShowsByTheatre = async (values)=>{
     }
 }
 
+export const getTheatreByMovie = async (values)=>{
+    try{
+        const resp = await axiosInstance.post(`${BASE_URL}/get-all-theatres-by-movie`,values);
+        return resp.data;
+    }catch(err){
+        console.log(err);
+    }
+}
+
 export const updateShow = async (values)=>{
     try{
         const resp = await axiosInstance.put(`${BASE_URL}/update`,values);

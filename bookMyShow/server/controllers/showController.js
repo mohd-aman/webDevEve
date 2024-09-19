@@ -71,17 +71,34 @@ const getAllShowByTheatre = async (req, res) => {
   }
 };
 
-const getShowById = async (req, res) => {
+const getTheatreByMovie = async (req, res) => {
   try {
-    const show = await showModel
-      .findById(req.body.showId)
-      .populate("movie")
+    const { movie, date } = req.body;
+    const shows = await showModel
+      .find({ movie: movie, date: date })
       .populate("theatre");
-      res.send({
-        success:true,
-        message:"Show has been fetched",
-        data:show
-      })
+    //   [{noon show,pvr chennai},{morning show,pvr chennai},{morningshow, kolkata}]
+    console.log(shows);
+    const uniqueTheatres = [];
+    shows.forEach((show) => {
+      let isTheatre = uniqueTheatres.find(
+        (theatre) => theatre._id === show.theatre._id
+      );
+      if (!isTheatre) {
+        let showsOfThisTheatre = shows.filter(
+          (showObj) => showObj.theatre._id == show.theatre._id
+        );
+        uniqueTheatres.push({
+          ...show.theatre._doc,
+          shows: showsOfThisTheatre,
+        });
+      }
+    });
+    res.send({
+      success: true,
+      message: "All theatre having shows for movies fetched successfully",
+      data: uniqueTheatres,
+    });
   } catch (err) {
     res.send({
       success: false,
@@ -90,4 +107,30 @@ const getShowById = async (req, res) => {
   }
 };
 
-module.exports = { addShow, deleteShow, updateShow, getAllShowByTheatre, getShowById };
+const getShowById = async (req, res) => {
+  try {
+    const show = await showModel
+      .findById(req.body.showId)
+      .populate("movie")
+      .populate("theatre");
+    res.send({
+      success: true,
+      message: "Show has been fetched",
+      data: show,
+    });
+  } catch (err) {
+    res.send({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
+module.exports = {
+  addShow,
+  deleteShow,
+  updateShow,
+  getAllShowByTheatre,
+  getShowById,
+  getTheatreByMovie
+};
