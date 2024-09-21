@@ -47,3 +47,12 @@ export const deleteShow = async (values)=>{
         console.log(err);
     }
 }
+
+export const getShowById = async (values)=>{
+    try{
+        const resp = await axiosInstance.post(`${BASE_URL}/get-show-by-id`,values);
+        return resp.data;
+    }catch(err){
+        console.log(err);
+    }
+}
