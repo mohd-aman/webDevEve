@@ -113,7 +113,7 @@ const forgotPassword = async (req,res)=>{
       success:true,
       message:"OTP sent to your email"
     })
-    await EmailHelper("otp.html",user.email,{name:user.name,otp:user.otp})
+    await EmailHelper("otp.html",user.email,{name:user.name,otp:user.otp},"OTP for BookMyShowClone")
   } catch (err) {
     res.send({
       success: false,
@@ -122,4 +122,43 @@ const forgotPassword = async (req,res)=>{
   }
 }
 
-module.exports = { createUser, readUser,getCurrentUser,forgotPassword };
+const resetPassword = async (req,res)=>{
+  try{
+    const resetDetails = req.body;
+    if(!resetDetails.password || !resetDetails.otp){
+      return res.send({
+        success:false,
+        message:"Password and OTP are required"
+      })
+    }
+    const user = await UserModel.findOne({otp:resetDetails.otp});
+    if(!user){
+      return res.send({
+        success:false,
+        message:"Invalid OTP"
+      })
+    }
+    if(user.otpExpiry < Date.now()){ //otp has expired
+       return res.send({
+        success:false,
+        message:"OTP has expired"
+       })
+    }
+    user.password = resetDetails.password;
+    user.otp = undefined;
+    user.otpExpiry = undefined;
+    await user.save();
+    res.send({
+      success:true,
+      message:"Password reset successful"
+    })
+  }catch(err){
+    res.send({
+      success:false,
+      message:err.message
+    })
+  }
+}
+
+
+module.exports = { createUser, readUser,getCurrentUser,forgotPassword, resetPassword };

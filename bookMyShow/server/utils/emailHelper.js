@@ -16,28 +16,26 @@ const transporter = nodemailer.createTransport({
 });
 
 const replaceContent = (content,creds)=>{
-    console.log(creds);
     let allKeysAttr = Object.keys(creds);
     allKeysAttr.forEach(key=>{
-        content = content.replace(`#${key}`,creds[key]);
+        content = content.replace(`#{${key}}`,creds[key]);
     })
-    console.log(content);
     return content;
 }
 
 // async..await is not allowed in global scope, must use a wrapper
-async function EmailHelper(templateName,recieverEmail,creds) {
+async function EmailHelper(templateName,recieverEmail,creds,emailSubject) {
     try{
         const templatePath = path.join(__dirname,"email_templates",templateName);
         const content = await fs.promises.readFile(templatePath,"utf-8");
         const emailDetails = {
             to:recieverEmail,
             from:"bookmyshow-clone@gmail.com",
-            subject:"OTP for BookMyShowClone",
+            subject:emailSubject,
             text : `Hi ${creds.name} this is your OTP for BookMyShowClone ${creds.otp}`,
             html: replaceContent(content,creds)
         }
-        // await transporter.sendMail(emailDetails);
+        await transporter.sendMail(emailDetails);
     }catch(err){
         console.log(err);
     }

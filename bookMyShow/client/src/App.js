@@ -10,6 +10,8 @@ import Admin from "./pages/Admin/Admin";
 import Partner from "./pages/Partner/Partner";
 import SingleMovie from "./components/SingleMovie";
 import BookShow from "./components/BookShow";
+import Forget from "./pages/Forget";
+import Reset from "./pages/Reset";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<Forget />} />
+          <Route path="/reset-password" element={<Reset />} />
           <Route path='/admin' element={
             <ProtectedRoute>
               <Admin/>
