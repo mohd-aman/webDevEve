@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const UserModel = require("../models/userModel");
 const EmailHelper = require("../utils/emailHelper");
 
@@ -13,6 +14,13 @@ const createUser = async function (req, res) {
     }
 
     const newUser = await UserModel(req.body);
+
+    // Hash the password before saving it into the database
+    const saltRounds = 10; // higher the saltRounds, the more secure the pass but slower the hashing
+    const hashedPassword = await bcrypt.hash(req.body.password,saltRounds);
+
+    newUser.password = hashedPassword; // replace the plain text password with the hashed one
+    
     await newUser.save();
     res.send({
       success: true,
@@ -38,7 +46,8 @@ const readUser = async function (req, res) {
     }
 
     //check for password for the time being we have stored password as plain text
-    if (user.password !== req.body.password) {
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
       return res.send({
         success: false,
         message: "Invalid Password",

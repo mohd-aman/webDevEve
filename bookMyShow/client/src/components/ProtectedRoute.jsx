@@ -7,12 +7,8 @@ import { HomeOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Header } from "antd/es/layout/layout";
 import { setUser } from "../redux/userSlice";
 import { hideLoading, showLoading } from "../redux/loaderSlice";
+import { ROLE } from "../utils/constant";
 
-const ROLE = {
-  ADMIN: "admin",
-  PARTNER: "partner",
-  USER: "user",
-}
 
 export default function ProtectedRoute({ children }) {
   const { user } = useSelector((store) => store.user);
