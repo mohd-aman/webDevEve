@@ -8,6 +8,12 @@ import { Header } from "antd/es/layout/layout";
 import { setUser } from "../redux/userSlice";
 import { hideLoading, showLoading } from "../redux/loaderSlice";
 
+const ROLE = {
+  ADMIN: "admin",
+  PARTNER: "partner",
+  USER: "user",
+}
+
 export default function ProtectedRoute({ children }) {
   const { user } = useSelector((store) => store.user);
   const { loading } = useSelector((store) => store.loader);
@@ -34,9 +40,13 @@ export default function ProtectedRoute({ children }) {
           label: "My Profile",
           icon: <UserOutlined />,
           onClick:()=>{
-            // if(user.isAdmin){
-                navigate('/admin')
-            // }
+            if(user.role === ROLE.ADMIN){
+                navigate("/admin");
+            }else if(user.role === ROLE.PARTNER){
+               navigate("/partner");
+            }else if(user.role === ROLE.USER){
+              navigate("/profile");
+            }
           }
         },
         {

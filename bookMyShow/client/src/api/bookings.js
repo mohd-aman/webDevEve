@@ -19,3 +19,12 @@ export const bookShow = async(values)=>{
         console.log(err);
     }
 }
+
+export const getAllBookings = async ()=>{
+    try{
+        const resp = await axiosInstance.get(`${BASE_URL}/all-booking-by-user`);
+        return resp.data;
+    }catch(err){
+        console.log(err);
+    }
+}

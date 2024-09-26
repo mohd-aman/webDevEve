@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import store from './redux/store';
 import Admin from "./pages/Admin/Admin";
 import Partner from "./pages/Partner/Partner";
+import Profile from "./pages/Profile/Profile";
 import SingleMovie from "./components/SingleMovie";
 import BookShow from "./components/BookShow";
 import Forget from "./pages/Forget";
@@ -40,6 +41,14 @@ function App() {
               <Partner/>
             </ProtectedRoute>
           }/>
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile/>
+              </ProtectedRoute>
+            }
+          />
           <Route path="/movie/:id" element={
             <ProtectedRoute>
               <SingleMovie/>
