@@ -58,3 +58,23 @@ Request flow?
 2. libuv picks up the request from the OS and queues it for processing by node.js
 3. if the node.js is busy, libuv holds incoming requests in a queue. once the server is ready to process new requests, libuv forward them to nodejs
 
+
+
+Part 2
+
+Agenda : 
+1. Solve the CPU extensive problem with the help child process. 
+2. Event and Event Emitter
+3. Http Server
+4. Event loop and Architecture. 
+
+
+Node : 
+Non-Blocking Nature
+Event Driven Architecture
+Concurrency 
+
+
+CPU Intensive Task-> 
+
+Blocking Nature : main thread is busy doing complex calculations. but still event loop.

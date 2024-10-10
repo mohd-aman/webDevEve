@@ -1,30 +1,29 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const { fork } = require("child_process");
+const path = require("path");
+const cors = require("cors");
 const app = express();
-
 
 app.use(cors());
 
-function calcaluteFib(number){
-    if(number<=1){
-        return number;
-    }
-    return calcaluteFib(number-1) + calcaluteFib(number - 2);
-}
+app.get("/fib", (req, res) => {
+  const { number, requestNumber } = req.query;
+  if (!number || !requestNumber || number < 0) {
+    return res.status(400).send("Please provide number and requestNumber");
+  }
 
-app.get('/fib',(req,res)=>{
-    const {number,requestNumber} = req.query;
-    if(!number ||!requestNumber || number<0){
-        return res.status(400).send('Please provide number and requestNumber');
-    }
-    const answer = calcaluteFib(number);
+  const fiboRes = fork(path.join(__dirname, "fiboWorker.js"));
+  fiboRes.send({ number: parseInt(number, 10) });
+  fiboRes.on("message", (answer) => {
     res.send({
-        status:'success',
-        message:answer,
-        requestNumber:requestNumber
-    })
-})
+      status: "success",
+      message: answer,
+      requestNumber: requestNumber,
+    });
+    fiboRes.kill();
+  });
+});
 
-app.listen('3000',()=>{
-    console.log('Server is running on port 3000');
-})
+app.listen("3000", () => {
+  console.log("Server is running on port 3000");
+});
